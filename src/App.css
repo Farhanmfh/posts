@@ -1,24 +1,148 @@
-.App {
+
+.main-title {
   text-align: center;
+  font-size: 5em;
+}
+.posts {
+  text-align: center;
+  margin: 15px;
+  margin-left: 15%;
+  margin-right: 15%;
+  background: whitesmoke;
+  border-style: ridge;
+  padding-bottom: 0px;
+  font-size: 10px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.title {
+  color: lightseagreen;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.post {
+  color: black;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.todo-list {
+  background-color: white;
+  margin: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #efefef;
+  box-shadow:
+    /* The top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.15),
+    /* The second layer */ 0 10px 0 -5px #eee,
+    /* The second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.15),
+    /* The third layer */ 0 20px 0 -10px #eee,
+    /* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 20px 0;
+  width: 70%;
+  border-bottom: 1px solid #cecece;
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  color: #333333;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+input[type="checkbox"]:focus {
+  outline: 0;
+}
+
+.box {
+  display: flex;
+  margin-left: 350px;
+  width: 50%;
+  background: red;
+}
+.btn-back {
+  background-color: rgb(78, 76, 175); /* Green */
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.btn-next {
+  background-color: rgb(78, 76, 175); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 974px;
+}
+.btn-add {
+  background-color: rgb(34, 241, 7); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 480px;
+}
+.buttonAddSubmit {
+  background-color: rgb(34, 241, 7); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 50px;
+}
+.form {
+  text-align: center;
+  line-height: 30px;
+ 
 }
 
-.App-intro {
-  font-size: large;
+.register {
+  
+  position: relative;
+  background: #fff;
+  margin: auto;
+  display: block;
+  align-content: center;
+  width: 30%;
+  text-align: center;
+  
+  
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.sign-up-form {
+  
+  margin: auto;
+  margin-top: 60px;
+  align-content: center;
+  border: #333333 1px solid;
+  margin-top: 50px;
+}
+
+.registerPage {   
+  background: #333;
+ height: 650px;
 }

@@ -1,0 +1,173 @@
+
+.main-title{
+    text-align: center;
+    font-size: 5em;
+
+}
+.posts {
+
+text-align: center;
+margin: 15px;
+margin-left: 15%;
+margin-right: 15%;
+background: whitesmoke;
+border-style: ridge;
+padding-bottom: 0px;
+font-size: 10px;
+}
+
+.title{
+    color: lightseagreen;
+}
+
+
+.post{
+    color: black;
+}
+
+.nav-bar{
+    margin :0;
+    padding: 20px;
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    background: rgba(0, 183, 255, 0.164);
+    border-style: solid;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    
+}
+
+li{
+
+color: black;
+margin-left: 4em;
+padding: 0;
+
+}
+
+li:hover{
+
+    background: rgb(58, 11, 170);
+    color: black;
+}
+
+li:active{
+
+    background: rgb(14, 2, 82);
+    color: black;
+}
+
+
+body {
+    background-color: whitesmoke;
+}
+
+.todo-list {
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow:
+    /* The top layer shadow */
+        0 1px 1px rgba(0,0,0,0.15),
+            /* The second layer */
+        0 10px 0 -5px #eee,
+            /* The second layer shadow */
+        0 10px 1px -4px rgba(0,0,0,0.15),
+            /* The third layer */
+        0 20px 0 -10px #eee,
+            /* The third layer shadow */
+        0 20px 1px -9px rgba(0,0,0,0.15);
+    padding: 30px;
+}
+
+
+
+.todo-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px 0;
+    width: 70%;
+    border-bottom: 1px solid #cecece;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    color: #333333;
+}
+
+input[type=checkbox] {
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+input[type=checkbox]:focus {
+    outline: 0;
+}
+
+.box{
+    display: flex;
+    margin-left: 350px;
+    width: 50%;
+    background: red;
+}
+.button {
+    background-color: rgb(78, 76, 175); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 200px;
+  }
+  .button2 {
+    background-color: rgb(78, 76, 175); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 750px;
+  }
+  .buttonAdd {
+    background-color: rgb(34, 241, 7); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 480px;
+  }
+  .buttonAddSubmit {
+    background-color: rgb(34, 241, 7); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 50px;
+  }
+.form{
+
+    text-align: center;
+    line-height: 30px;
+}
