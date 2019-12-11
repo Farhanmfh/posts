@@ -8,7 +8,7 @@ const key = Token.generate(5)
 router.route('/users').get((req, res) => {
     newUser.find()
         .then(data => res.json(data))
-        .catch(err => res.status(400).json("MFH_CHECK : " + err))
+        .catch(err => res.status(400).json("MFH_CHECK GET REQUEST: " + err))
 
 })
 
