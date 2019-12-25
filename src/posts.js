@@ -22,7 +22,7 @@ class Post extends Component {
                     <Link to={`/edit/${this.props.url}`}>
                         <input type="button" className='btn btn-secondary' value='Edit' />
                     </Link>
-||
+                    ||
                     <input type="button" className='btn btn-danger' value='Delete'
                         onClick={() => { this.props.deletePost(this.props.url) }} />
                 </td>

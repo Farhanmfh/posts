@@ -12,7 +12,7 @@ class Home extends Component {
     constructor() {
         super()
         this.state = {
-            isLoded: false,
+
             data: [{
                 "userId": 1,
                 "id": 1,
@@ -36,7 +36,6 @@ class Home extends Component {
         fetch('/post')
             .then(res => res.json())
             .then(json => this.setState({
-                isLoded: true,
                 data: json
             })
             )
@@ -104,12 +103,13 @@ class Home extends Component {
         const myPost = filterData.map(item => <Post deletePost={this.deletePost} key={item.title} url={item._id} post={item} />)
 
         return (
+            
             <div className='container'>
-
-                <br/>
-                    <Link to='/addPost'> <button className='btn btn-success btn-add' onClick={this.handleSave}> Add Post </button> </Link>
+              
                 <br />
-                <br/>
+                <Link to='/addPost'> <button className='btn btn-success btn-add' onClick={this.handleSave}> Add Post </button> </Link>
+                <br />
+                <br />
                 <SearchBox handleInput={this.handleSearch} />
                 <Dropdown handleInput={this.handlePage} />
 
@@ -124,10 +124,10 @@ class Home extends Component {
                         {myPost}
                     </tbody>
                 </table>
-                
-                    <button className='btn btn-info btn-back' onClick={this.handleBack}> Back </button>
-                    <button className='btn btn-info btn-next' style={{ textAlign: "center" }} onClick={this.handleNext}> Next </button>
-            
+
+                <button className='btn btn-info btn-back' onClick={this.handleBack}> Back </button>
+                <button className='btn btn-info btn-next' style={{ textAlign: "center" }} onClick={this.handleNext}> Next </button>
+
 
             </div >
         )

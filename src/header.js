@@ -1,16 +1,28 @@
 import React, { Component } from 'react'
 import {
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 class Header extends Component {
+
+
+    onClear = (e) => {
+        e.preventDefault()
+        localStorage.clear()
+        window.location = '/signIn'
+    }
+
+
+
+
+
 
     render() {
         return (
             <div>
                 <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-                   <Link className='navbar-brand' to='/'> <img width="60" src='http://localhost:3000/favicon.ico' alt="Logo" /> My Posts Project </Link>
+                    <Link className='navbar-brand' to='/'> <img width="60" src='http://localhost:3000/favicon.ico' alt="Logo" /> My Posts Project </Link>
                     <ul className='navbar-nav mr-auto'>
-                        <Link  className='nav-link' to='/'>
+                        <Link className='nav-link' to='/'>
                             <li className="navbar-item">Home</li>
                         </Link>
                         <Link className='nav-link' to='/about'>
@@ -20,13 +32,15 @@ class Header extends Component {
                             <li className="navbar-item">Contact Us</li>
                         </Link>
                         <Link className='nav-link' to='/signIn'>
-                        <li className="navbar-item"> Sign In</li>
+                            <li className="navbar-item"> Sign In</li>
                         </Link>
                         <Link className="nav-link" to="/signUp">
-                        <li className="navbar-item"> Register</li>
+                            <li className="navbar-item"> Register</li>
                         </Link>
                     </ul>
+                    <button onClick={this.onClear} className='btn btn-danger' > SignOut </button>
                 </nav>
+
             </div>
         )
     }

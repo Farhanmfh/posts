@@ -73,9 +73,23 @@ export class signUp extends Component {
                 password2: this.state.password2
             }
             axios.post('/signUp', newUser)
-                .then(res => console.log(res))
-                .then(console.log('submitted'))
-                // .then(window.location = '/home')
+                .then(response =>{ 
+                    if (response.data.message === "Account Already Exist") {
+                    return this.setState({
+                        error: "Account Already Exist",
+                        errDisplay : 'block'
+                    })
+                }
+            }).catch(err => {
+                if (err || err.response.status === 500) {
+                    console.log(err)
+                    this.setState({
+                        errDisplay: 'block',
+                        error: 'Server Error Please Try Again Later or Contact Site Admin'
+                    })
+                }
+            })
+                // .then(window.location = '/signIn')
 
 
         }
@@ -88,7 +102,7 @@ export class signUp extends Component {
             <div className='register'>
                 <div className='sign-up-form'>
                     <form onSubmit={this.onSubmit}>
-                        <label style={{ display: this.state.errDisplay, color: "red", border: "red 1px solid", backgroundColor: "black" }}>Errors : {this.state.error} </label>
+                        <label style={{ display: this.state.errDisplay, color: "red", border: "red 1px solid", backgroundColor: "black" }}>Alert : {this.state.error} ! </label>
                         <br />
                         <h1>Register</h1>
                         <br />
