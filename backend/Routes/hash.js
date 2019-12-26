@@ -21,7 +21,7 @@ router.route('/hash').post((req, res) => {
 
             const newHash = new hash({
                 userId,
-                user
+                hash
             })
             newHash.save()
                 .then(() => res.json('Hash Sucessfully Genrated !!!'))

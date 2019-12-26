@@ -60,7 +60,7 @@ export class signIn extends Component {
             }
             axios.post('/signIn', User)
                 .then(response => {
-                    console.log(response.data.isActive)
+                   
                     if (response.data.isActive === false) {
                         return (this.setState({
                             errDisplay: 'block',
@@ -78,10 +78,10 @@ export class signIn extends Component {
                         local: response.data.token
                     })
                     if (response.data.message === 'OK' && response.data.isActive === true) {
-                        localStorage.setItem(this.state.email, this.state.local)
+                        localStorage.setItem(this.state.email, response.data.hash)
                     }
                     setTimeout(() => {
-                        window.location = '/'
+                        window.push = '/'
                     }, 2000)
 
                 })
@@ -121,7 +121,6 @@ export class signIn extends Component {
         }
 
     }
-
     onClear = (e) => {
         e.preventDefault()
         localStorage.clear()

@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Token = require('randomstring')
 const newUser = require('../models/user.model')
+const UserHash = require('../models/userSession')
 const nodemailer = require("nodemailer");
 
 
@@ -9,14 +10,17 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'noreply_CODE@globalelitetechnology.com', // generated ethereal user
-      pass: 'Goodpassword@047' // generated ethereal password
+        user: 'noreply_CODE@globalelitetechnology.com', // generated ethereal user
+        pass: 'Goodpassword@047' // generated ethereal password
     }
-  });
+});
 
-  
+
+
 
 const key = Token.generate(5)
+const key2 = Token.generate(20)
+
 
 router.route('/users').get((req, res) => {
     newUser.find()
@@ -32,10 +36,6 @@ router.route('/signUp').post((req, res) => {
     const password = req.body.password
     const isActive = false
     const secretToken = key
-
-    
-      
-    
 
 
     // Input Valadation
@@ -59,57 +59,63 @@ router.route('/signUp').post((req, res) => {
     newUser.find({ email: email, }, (err, prvUser) => {
         if (err) {
             return res.send('Error')
-        } else if (prvUser.length > 0 ) {
+        } else if (prvUser.length > 0) {
             return res.send({ message: "Account Already Exist" })
+        } else {
+
+            const newRegister = new newUser({
+                username,
+                email,
+                password,
+                isActive,
+                secretToken
+            })
+
+
+
+            newRegister.save()
+                .then(() => res.send({ message: 'User Sucessfully Registred !!!' }))
+                .then(() => {
+                    const userId = req.body.email
+                    const hash = key2
+
+                    const Hash = new UserHash({
+                        userId,
+                        hash
+                    })
+                    Hash.save()
+                        .then(() => res.json('Hash Sucessfully Genrated !!!'))
+                        .catch(err => res.status(400).json("MFH_CHECK : " + err))
+                })
+                .catch(err => res.send({ message: err }))
         }
 
 
         // Save to DataBase
 
 
-        const newRegister = new newUser({
-            username,
-            email,
-            password,
-            isActive,
-            secretToken
-        })
+
+
+
+
+
+        // Sending Email Part
         let info = {
             from: 'noreply_CODE@globalelitetechnology.com', // sender address
             to: req.body.email, // list of receivers
             subject: "Your Verification Code", // Subject line
             text: `This is your Verification code : ${key}`, // plain text body
             html: ''
-          }
+        }
 
-        //   sendMail('','','', (err,data)=>{
-        //       if(!err){
-        //           console.log('Sucess!!')
-        //       }else if (err){
-        //           console.log('Error wiht noob')
-        //       }else {
-        //           console.log(data)
-        //       }
-        //   })
-
-        transporter.sendMail(info,(err,data)=>{
-            if(!err){
-                console.log(data)
-            }else if (err){
-                console.log(err)
-            }else {
-                console.log(data)
+        transporter.sendMail(info, (err, data) => {
+            if (!err) {
+                return res.send({ message: 'Mail Sent Sucess' })
+            } else if (err) {
+                return res.send({ message: 'Error' + err })
             }
         })
-        
 
-
-        newRegister.save()
-            .then(() => res.json('User Sucessfully Registred !!!'))
-            .catch(err => res.status(400).json("MFH_CHECK : " + err))
-            
-            // req.session.user = sessionUser;
-            // res.send(sessionUser);
     })
 })
 

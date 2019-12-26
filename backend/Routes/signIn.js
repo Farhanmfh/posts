@@ -1,16 +1,11 @@
 const router = require('express').Router()
 const newUser = require('../models/user.model')
-const userSession = require('../models/userSession')
+const userHash = require('../models/userSession')
 //const bcrypt = require('bcrypt')
+const Token = require('randomstring')
 
 
-router.route('/session').get((req, res) => {
-    userSession.find()
-        .then(data => res.json(data))
-        .catch(err => res.status(400).json("MFH_CHECK GET REQUEST: " + err))
-
-})
-
+const key = Token.generate(20)
 
 
 
@@ -38,12 +33,51 @@ router.route('/signIn').post((req, res) => {
         }
         else if (prvUser.email === req.body.email && prvUser.password === req.body.password) {
 
-            res.send({
-                message: 'OK',
-                token: prvUser.secretToken,
-                isActive: prvUser.isActive
+            userHash.findOne({userId: req.body.email},(err, data)=>{
+               console.log(data)
+                res.send({
+                    message: 'OK',
+                    token: prvUser.secretToken,
+                    isActive: prvUser.isActive,
+                    hash: data.hash
+                })
+
+
+
             })
+
+           
+
+
+            // if (prvUser === null || prvUser.length < 0) {
+            //     const userId = req.body.email
+            //     const hash = key
+
+            //     const newHash = new userHash({
+            //         userId,
+            //         hash
+            //     })
+            //     newHash.save()
+            //         .then(() => res.json('Hash Sucessfully Genrated !!!'))
+            //         .catch(err => res.status(400).json("MFH_CHECK : " + err))
+            // }
+
+            const query = { userId: req.body.email }
+            userHash.findOneAndUpdate(query, { hash: key }, (err) => {
+                if (!err) {
+                    console.log('Done')
+                } else {
+                    console.log(err)
+                    return res.send({ message: 'Err' + err })
+
+                }
+            })
+
+
+
         }
+
+
 
     })
 })

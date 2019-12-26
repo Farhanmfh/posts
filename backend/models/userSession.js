@@ -8,7 +8,7 @@ const HashSchema = new Schema({
     },
 
 
-    user:{
+    hash:{
         type : String
     },
 

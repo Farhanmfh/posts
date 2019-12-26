@@ -7,7 +7,7 @@ export class verify extends Component {
         super()
         this.state = {
 
-            email: 'itfarhanexe@gmail.com',
+            email: '',
             code: '',
             alert: '',
             errDisplay: "none",
@@ -61,9 +61,7 @@ export class verify extends Component {
                             window.location='/signIn'
                        }
                     }, 3000); 
-                    
-
-                   
+                                       
                 })
                 .catch(err => {
                     if (err && err.response.status === 500) {
@@ -81,7 +79,7 @@ export class verify extends Component {
     render() {
         return (
             <div>
-                <div className='register'>
+                <div className='register' >
                     {}
                     <div className='sign-up-form'>
                         <form onSubmit={this.onSubmit}>
